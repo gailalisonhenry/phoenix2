@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking | Royal Phoenix Health & Wellness</title>
+    <meta name="description" content="Complete your booking for Royal Phoenix Health & Wellness services.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Royal Phoenix Health & Wellness" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="booking.html" class="nav-cta active">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero booking-hero">
+        <div class="booking-container">
+            <h1 class="page-title">Begin Your Healing Journey</h1>
+            <p class="page-subtitle">Complete your information below to get started with your selected package.</p>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="booking-form-section">
+        <div class="booking-container">
+            <!-- Selected Package Display -->
+            <div class="selected-package-display" id="packageDisplay">
+                <h3 id="packageName">Loading package...</h3>
+                <div class="price" id="packagePrice"></div>
+            </div>
+
+            <!-- Booking Form -->
+            <form class="booking-form" id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Details (Hidden) -->
+                <input type="hidden" id="selectedPackage" name="selectedPackage">
+                <input type="hidden" id="selectedPrice" name="selectedPrice">
+
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <h3>Tell Us About Your Journey</h3>
+                    <div class="form-group full-width">
+                        <label for="healthGoals">What are your primary health and wellness goals?</label>
+                        <textarea id="healthGoals" name="healthGoals" rows="4" placeholder="Share what you're hoping to achieve through this work..."></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="challenges">What challenges are you currently facing?</label>
+                        <textarea id="challenges" name="challenges" rows="4" placeholder="Help us understand what you're working through..."></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="hearAbout">How did you hear about Royal Phoenix Health & Wellness?</label>
+                        <select id="hearAbout" name="hearAbout">
+                            <option value="">Select an option</option>
+                            <option value="search">Google/Search Engine</option>
+                            <option value="social">Social Media</option>
+                            <option value="referral">Friend/Family Referral</option>
+                            <option value="health-provider">Healthcare Provider</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Scheduling Preferences -->
+                <div class="form-section">
+                    <h3>Scheduling Preferences</h3>
+                    <div class="form-group full-width">
+                        <label for="preferredTime">Preferred day(s) and time(s) for sessions</label>
+                        <textarea id="preferredTime" name="preferredTime" rows="3" placeholder="Example: Tuesdays and Thursdays, 10am-2pm"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="timezone">Your Time Zone</label>
+                        <select id="timezone" name="timezone">
+                            <option value="">Select your timezone</option>
+                            <option value="EST">Eastern Time (EST)</option>
+                            <option value="CST">Central Time (CST)</option>
+                            <option value="MST">Mountain Time (MST)</option>
+                            <option value="PST">Pacific Time (PST)</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Additional Notes -->
+                <div class="form-section">
+                    <h3>Additional Information</h3>
+                    <div class="form-group full-width">
+                        <label for="notes">Any additional information you'd like to share?</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Questions, concerns, or anything else we should know..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-primary btn-large">Submit Booking Request</button>
+                </div>
+
+                <div class="payment-note">
+                    <p><strong>Next Steps:</strong> After submitting this form, you'll receive an email within 24 hours with payment instructions and a link to schedule your first session. Payment can be made via Venmo, Zelle, or credit card.</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Royal Phoenix Health & Wellness</h3>
+                    <p>Rise. Restore. Reclaim Your Power.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="packages.html">Packages</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Royal Phoenix Health & Wellness. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="booking.js"></script>
+</body>
+</html>
