@@ -81,12 +81,14 @@ body {
     align-items: center;
     text-decoration: none;
     transition: var(--transition);
+    background: transparent;
 }
 
 .logo-img {
     height: 60px;
     width: auto;
     display: block;
+    background: transparent;
 }
 
 .logo:hover {
