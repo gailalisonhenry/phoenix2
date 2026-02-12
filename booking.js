@@ -42,7 +42,7 @@ document.getElementById('bookingForm').addEventListener('submit', function(e) {
     // Formspree will redirect automatically if you set it up in their dashboard
     // OR we can handle it with JavaScript for other form handlers
     
-    // For custom form handlers (not Formspree), uncomment below:
+    <form class="booking-form" id="bookingForm" action="https://formspree.io/f/xeelakqa" method="POST">
     /*
     e.preventDefault();
     const formData = new FormData(this);
