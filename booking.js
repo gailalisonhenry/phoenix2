@@ -3,25 +3,117 @@ const urlParams = new URLSearchParams(window.location.search);
 const packageName = urlParams.get('package');
 const packagePrice = urlParams.get('price');
 
-// Package display names
-const packageNames = {
-    'phoenix-spark': 'Phoenix Spark — Single Coaching Session',
-    'phoenix-ignite': 'Phoenix Ignite — 1-Month Intensive',
-    'phoenix-reset': 'Phoenix Reset — 3-Month Transformation Package',
-    'phoenix-rebirth': 'Phoenix Rebirth — 6-Month Premium Coaching Package',
-    'inner-voice-insight': 'Inner-Voice Insight — Single OA Scan',
-    'inner-voice-weekly': 'Inner-Voice Weekly Balance — 1-Month Package',
-    'inner-voice-evolution': 'Inner-Voice Evolution — 3-Month Package',
-    'inner-voice-ascension': 'Inner-Voice Ascension — 6-Month Package'
+// Package display names and details
+const packageDetails = {
+    'phoenix-spark': {
+        name: 'Phoenix Spark — Single Coaching Session',
+        price: '$210',
+        details: [
+            'Includes one coaching session (50 minutes)',
+            'One AO Inner-Voice Scan',
+            'Targeted coaching',
+            'Personalized frequency tones',
+            'Clarity & emotional balancing'
+        ]
+    },
+    'phoenix-ignite': {
+        name: 'Phoenix Ignite — 1-Month Intensive',
+        price: '$500',
+        details: [
+            'Weekly coaching (4 sessions, 50 minutes each)',
+            'Weekly OA scans (4 total)',
+            'Frequency tones',
+            'Personalized blueprint session'
+        ]
+    },
+    'phoenix-reset': {
+        name: 'Phoenix Reset — 3-Month Transformation Package',
+        price: '$1,500',
+        details: [
+            'Two coaching sessions/month (6 total, 50 minutes each)',
+            'Weekly OA Inner-Voice scans (12 total)',
+            'Frequency optimization tones',
+            'Monthly progress check-ins',
+            'Personalized Wellness Action Plan',
+            'Text/email accountability'
+        ]
+    },
+    'phoenix-rebirth': {
+        name: 'Phoenix Rebirth — 6-Month Premium Coaching Package',
+        price: '$2,500',
+        details: [
+            'Two to Four coaching sessions/month (50 minutes each)',
+            'Weekly OA scans (24 total, includes 15 minute review each)',
+            'Full plan customization',
+            'Priority messaging support',
+            'Monthly rebalance review',
+            'One emergency clarity call/month'
+        ]
+    },
+    'inner-voice-insight': {
+        name: 'Inner-Voice Insight — Single OA Scan',
+        price: '$75',
+        details: [
+            'Full Inner-Voice OA scan (includes 15 minute review)',
+            'Frequency optimization tones',
+            '15-minute review session'
+        ]
+    },
+    'inner-voice-weekly': {
+        name: 'Inner-Voice Weekly Balance — 1-Month Package',
+        price: '$250',
+        details: [
+            'Four OA scans (includes 15 minute review each)',
+            'Weekly tones',
+            'Four 15-minute review sessions'
+        ]
+    },
+    'inner-voice-evolution': {
+        name: 'Inner-Voice Evolution — 3-Month Package',
+        price: '$800',
+        details: [
+            'Weekly scans (12 total, includes 15 minute review each)',
+            'Weekly tones',
+            'Weekly review sessions',
+            'Monthly progress snapshot'
+        ]
+    },
+    'inner-voice-ascension': {
+        name: 'Inner-Voice Ascension — 6-Month Package',
+        price: '$1,500',
+        details: [
+            'Weekly scans (24 total, includes 15 minute review each)',
+            'Weekly tones',
+            'Weekly review sessions',
+            'Emotional trends report each month'
+        ]
+    }
 };
 
-// Display selected package
-if (packageName && packagePrice) {
-    const displayName = packageNames[packageName] || packageName;
-    document.getElementById('packageName').textContent = displayName;
-    document.getElementById('packagePrice').textContent = '$' + packagePrice;
-    document.getElementById('selectedPackage').value = displayName;
-    document.getElementById('selectedPrice').value = packagePrice;
+// Display selected package with details
+if (packageName && packagePrice && packageDetails[packageName]) {
+    const pkg = packageDetails[packageName];
+    
+    // Update package name and price
+    document.getElementById('packageName').textContent = pkg.name;
+    document.getElementById('packagePrice').textContent = pkg.price;
+    
+    // Create and display package details list
+    const packageDisplay = document.getElementById('packageDisplay');
+    const detailsList = document.createElement('ul');
+    detailsList.className = 'package-details-list';
+    
+    pkg.details.forEach(detail => {
+        const li = document.createElement('li');
+        li.textContent = detail;
+        detailsList.appendChild(li);
+    });
+    
+    packageDisplay.appendChild(detailsList);
+    
+    // Set hidden form fields
+    document.getElementById('selectedPackage').value = pkg.name;
+    document.getElementById('selectedPrice').value = pkg.price;
 } else {
     document.getElementById('packageName').textContent = 'No package selected';
     document.getElementById('packagePrice').textContent = 'Please select a package from the packages page';
@@ -42,21 +134,7 @@ document.getElementById('bookingForm').addEventListener('submit', function(e) {
     // Formspree will redirect automatically if you set it up in their dashboard
     // OR we can handle it with JavaScript for other form handlers
     
-    <form
-  action="https://formspree.io/f/xeelakqa"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
+    // For custom form handlers (not Formspree), uncomment below:
     /*
     e.preventDefault();
     const formData = new FormData(this);
