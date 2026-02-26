@@ -110,51 +110,21 @@ if (packageName && packagePrice && packageDetails[packageName]) {
     });
     
     packageDisplay.appendChild(detailsList);
-    
-    // Set hidden form fields
-    document.getElementById('selectedPackage').value = pkg.name;
-    document.getElementById('selectedPrice').value = pkg.price;
 } else {
     document.getElementById('packageName').textContent = 'No package selected';
     document.getElementById('packagePrice').textContent = 'Please select a package from the packages page';
 }
 
-// Form submission handling
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-    // If no package selected, prevent submission
-    if (!packageName || !packagePrice) {
-        e.preventDefault();
-        alert('Please select a package from the packages page before submitting.');
-        window.location.href = 'packages.html';
-        return false;
+// Update Tally iframe with package information via URL parameters
+// Tally will receive the package info through hidden fields in the form
+if (packageName && packagePrice) {
+    const iframe = document.querySelector('iframe[data-tally-src]');
+    if (iframe) {
+        const pkg = packageDetails[packageName];
+        // Add package info as URL parameters to Tally
+        const tallyUrl = new URL(iframe.getAttribute('data-tally-src'));
+        tallyUrl.searchParams.append('packageName', pkg.name);
+        tallyUrl.searchParams.append('packagePrice', pkg.price);
+        iframe.setAttribute('data-tally-src', tallyUrl.toString());
     }
-    
-    // If using Formspree, it will handle the submission
-    // After successful submission, redirect to thank you page
-    // Formspree will redirect automatically if you set it up in their dashboard
-    // OR we can handle it with JavaScript for other form handlers
-    
-    // For custom form handlers (not Formspree), uncomment below:
-    /*
-    e.preventDefault();
-    const formData = new FormData(this);
-    
-    fetch(this.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            window.location.href = 'thankyou.html';
-        } else {
-            alert('There was a problem submitting your form. Please try again or email us directly.');
-        }
-    })
-    .catch(error => {
-        alert('There was a problem submitting your form. Please try again or email us directly.');
-    });
-    */
-});
+}

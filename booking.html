@@ -43,102 +43,23 @@
                 <div class="price" id="packagePrice"></div>
             </div>
 
-            <!-- Booking Form -->
-            <form class="booking-form" id="bookingForm" action="https://formspree.io/f/xeelakqa" method="POST">
-                <!-- Personal Information -->
-                <div class="form-section">
-                    <h3>Personal Information</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package Details (Hidden) -->
-                <input type="hidden" name="_next" value="https://phoenix2-opal.vercel.app/thankyou.html">
-                <input type="hidden" name="_redirect" value="https://phoenix2-opal.vercel.app/thankyou.html">
-                <input type="hidden" name="_subject" value="New Booking Request - Royal Phoenix Health">
-                <input type="hidden" id="selectedPackage" name="selectedPackage">
-                <input type="hidden" id="selectedPrice" name="selectedPrice">
-
-                <!-- Additional Information -->
-                <div class="form-section">
-                    <h3>Tell Us About Your Journey</h3>
-                    <div class="form-group full-width">
-                        <label for="healthGoals">What are your primary health and wellness goals?</label>
-                        <textarea id="healthGoals" name="healthGoals" rows="4" placeholder="Share what you're hoping to achieve through this work..."></textarea>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="challenges">What challenges are you currently facing?</label>
-                        <textarea id="challenges" name="challenges" rows="4" placeholder="Help us understand what you're working through..."></textarea>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="hearAbout">How did you hear about Royal Phoenix Health & Wellness?</label>
-                        <select id="hearAbout" name="hearAbout">
-                            <option value="">Select an option</option>
-                            <option value="search">Google/Search Engine</option>
-                            <option value="social">Social Media</option>
-                            <option value="referral">Friend/Family Referral</option>
-                            <option value="health-provider">Healthcare Provider</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Scheduling Preferences -->
-                <div class="form-section">
-                    <h3>Scheduling Preferences</h3>
-                    <div class="form-group full-width">
-                        <label for="preferredTime">Preferred day(s) and time(s) for sessions</label>
-                        <textarea id="preferredTime" name="preferredTime" rows="3" placeholder="Example: Tuesdays and Thursdays, 10am-2pm"></textarea>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="timezone">Your Time Zone</label>
-                        <select id="timezone" name="timezone">
-                            <option value="">Select your timezone</option>
-                            <option value="EST">Eastern Time (EST)</option>
-                            <option value="CST">Central Time (CST)</option>
-                            <option value="MST">Mountain Time (MST)</option>
-                            <option value="PST">Pacific Time (PST)</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Additional Notes -->
-                <div class="form-section">
-                    <h3>Additional Information</h3>
-                    <div class="form-group full-width">
-                        <label for="notes">Any additional information you'd like to share?</label>
-                        <textarea id="notes" name="notes" rows="4" placeholder="Questions, concerns, or anything else we should know..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="form-submit">
-                    <button type="submit" class="btn btn-primary btn-large">Submit Booking Request</button>
-                </div>
-
-                <div class="payment-note">
-                    <p><strong>Next Steps:</strong> After submitting this form, you'll receive an email within 24 hours with payment instructions and a link to schedule your first session. Payment can be made via Venmo or PayPal.</p>
-                </div>
-            </form>
+            <!-- Tally Form Embedded -->
+            <div class="tally-form-container">
+                <iframe 
+                    data-tally-src="https://tally.so/embed/zxKjW0?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                    loading="lazy" 
+                    width="100%" 
+                    height="600" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0" 
+                    title="Royal Phoenix Booking Form"
+                    style="border: none;"
+                ></iframe>
+                <script>
+                    var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+                </script>
+            </div>
         </div>
     </section>
 
