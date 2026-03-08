@@ -877,8 +877,9 @@ section {
     background: linear-gradient(135deg, 
         rgba(26, 58, 82, 0.03) 0%, 
         rgba(212, 165, 116, 0.06) 100%);
-    padding: 8rem 0 5rem;
+    padding: 10rem 0 5rem;
     text-align: center;
+    margin-top: 0;
 }
 
 .page-title-simple {
