@@ -1,211 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Packages | Royal Phoenix Health & Wellness</title>
-    <meta name="description" content="Explore coaching packages and Inner-Voice insight options to support your healing journey.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Packages | Royal Phoenix Health & Wellness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2d45;
+      --gold: #b8860b;
+      --gold-light: #d4a843;
+      --cream: #f5f0e8;
+      --warm-white: #faf8f4;
+      --text: #2c2c2c;
+      --text-light: #5a5a5a;
+      --red-accent: #8b2a2a;
+    }
+
+    body { font-family: 'Jost', sans-serif; color: var(--text); background: var(--warm-white); font-weight: 300; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--warm-white);
+      border-bottom: 1px solid rgba(26,45,69,0.1);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 80px;
+    }
+    .nav-logo img { height: 60px; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text); font-size: 0.9rem;
+      letter-spacing: 0.05em; text-transform: uppercase; font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-cta a {
+      background: var(--navy); color: #fff !important;
+      padding: 0.6rem 1.4rem; border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta a:hover { background: var(--gold) !important; }
+
+    .page-hero {
+      padding: 160px 2rem 80px;
+      text-align: center;
+      background: var(--warm-white);
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300; color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .page-hero p {
+      max-width: 600px; margin: 0 auto;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1.3rem;
+      color: var(--gold);
+    }
+
+    .packages-section { padding: 60px 2rem 100px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .pkg-category {
+      margin-bottom: 5rem;
+    }
+    .pkg-category-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; color: var(--navy);
+      font-weight: 400; padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 2.5rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pkg-card {
+      background: var(--cream);
+      border-top: 3px solid var(--navy);
+      padding: 2rem;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    .pkg-card.popular { border-top-color: var(--gold); }
+    .popular-badge {
+      position: absolute; top: -1px; right: 1.5rem;
+      background: var(--gold); color: #fff;
+      font-size: 0.7rem; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 0.3rem 0.75rem;
+    }
+
+    .pkg-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; color: var(--navy);
+      font-weight: 500; margin-bottom: 0.25rem;
+    }
+    .pkg-price {
+      font-size: 1.6rem; color: var(--gold);
+      font-weight: 400; margin-bottom: 1.25rem;
+    }
+    .pkg-features {
+      list-style: none; flex: 1; margin-bottom: 1.75rem;
+    }
+    .pkg-features li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(26,45,69,0.08);
+      font-size: 0.92rem; color: var(--text);
+      display: flex; gap: 0.5rem; align-items: flex-start;
+      line-height: 1.5;
+    }
+    .pkg-features li:last-child { border-bottom: none; }
+    .pkg-features li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+    .btn-select {
+      display: block; text-align: center;
+      background: var(--navy); color: #fff;
+      padding: 0.75rem 1.5rem; border-radius: 2px;
+      text-decoration: none; font-size: 0.85rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .btn-select:hover { background: var(--gold); }
+    .pkg-card.popular .btn-select { background: var(--gold); }
+    .pkg-card.popular .btn-select:hover { background: var(--navy); }
+
+    .cta-section {
+      background: var(--navy); color: #fff;
+      text-align: center; padding: 100px 2rem;
+    }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    .cta-section p { max-width: 500px; margin: 0 auto 2.5rem; opacity: 0.8; line-height: 1.7; }
+    .btn-gold {
+      background: var(--gold); color: #fff;
+      padding: 0.9rem 2.2rem; border-radius: 2px;
+      text-decoration: none; font-size: 0.9rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: background 0.2s; display: inline-block;
+    }
+    .btn-gold:hover { background: var(--gold-light); }
+
+    footer {
+      background: var(--navy); color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem; text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    footer h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #fff; font-weight: 400; margin-bottom: 0.5rem; }
+    footer p.tagline-footer { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold-light); margin-bottom: 1.5rem; }
+    footer nav.footer-nav { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    footer nav.footer-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    footer nav.footer-nav a:hover { color: var(--gold-light); }
+    footer .copy { font-size: 0.8rem; opacity: 0.5; }
+
+    @media (max-width: 768px) {
+      .pkg-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="Royal Phoenix Health & Wellness" class="logo-img">
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="packages.html" class="active">Packages</a></li>
-                <li><a href="booking.html" class="nav-cta">Get Started</a></li>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="https://phoenix2-opal.vercel.app/logo.png" alt="Royal Phoenix Health & Wellness" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="packages.html" class="active">Packages</a></li>
+      <li><a href="ao-scan.html">AO Technology</a></li>
+      <li class="nav-cta"><a href="booking.html">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <h1>Package Overview &amp; Sales Page</h1>
+    <p>"Rise into your highest self. Your transformation begins now!"</p>
+  </div>
+
+  <!-- PACKAGES -->
+  <section class="packages-section">
+    <div class="container">
+
+      <!-- COMBINATION PACKAGES -->
+      <div class="pkg-category">
+        <h2 class="pkg-category-title">Combination Health Coach &amp; Inner-Voice Insight Packages</h2>
+        <div class="pkg-grid">
+
+          <!-- Phoenix Spark -->
+          <div class="pkg-card">
+            <div class="pkg-name">Phoenix Spark</div>
+            <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;">Single Coaching Session</div>
+            <div class="pkg-price">$210</div>
+            <ul class="pkg-features">
+              <li>Includes one AO Inner-Voice Scan</li>
+              <li>Targeted coaching</li>
+              <li>Personalized frequency tones</li>
+              <li>Clarity &amp; emotional balancing</li>
             </ul>
+            <a href="booking.html?package=phoenix-spark&price=210" class="btn-select">Select Package</a>
+          </div>
+
+          <!-- Phoenix Ignite -->
+          <div class="pkg-card">
+            <div class="pkg-name">Phoenix Ignite</div>
+            <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;">One-Month Intensive</div>
+            <div class="pkg-price">$500</div>
+            <ul class="pkg-features">
+              <li>Weekly coaching (four sessions)</li>
+              <li>Weekly OA scans (four total)</li>
+              <li>Frequency tones</li>
+              <li>Personalized blueprint session</li>
+            </ul>
+            <a href="booking.html?package=phoenix-ignite&price=500" class="btn-select">Select Package</a>
+          </div>
+
+          <!-- Phoenix Reset -->
+          <div class="pkg-card popular">
+            <span class="popular-badge">Most Popular</span>
+            <div class="pkg-name">Phoenix Reset</div>
+            <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;">Three-Month Transformation Package</div>
+            <div class="pkg-price">$1,500</div>
+            <ul class="pkg-features">
+              <li>Two coaching sessions/month (six total)</li>
+              <li>Weekly OA Inner-Voice scans (twelve total)</li>
+              <li>Frequency optimization tones</li>
+              <li>Monthly progress check-ins</li>
+              <li>Personalized Wellness Action Plan</li>
+              <li>Text/email accountability</li>
+            </ul>
+            <a href="booking.html?package=phoenix-reset&price=1500" class="btn-select">Select Package</a>
+          </div>
+
+          <!-- Phoenix Rebirth -->
+          <div class="pkg-card">
+            <div class="pkg-name">Phoenix Rebirth</div>
+            <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;">Six-Month Premium Coaching Package</div>
+            <div class="pkg-price">$2,500</div>
+            <ul class="pkg-features">
+              <li>Two to four coaching sessions/month</li>
+              <li>Weekly OA scans (twenty-four total)</li>
+              <li>Full plan customization</li>
+              <li>Priority messaging support</li>
+              <li>Monthly rebalance review</li>
+              <li>One emergency clarity call/month</li>
+            </ul>
+            <a href="booking.html?package=phoenix-rebirth&price=2500" class="btn-select">Select Package</a>
+          </div>
+
         </div>
+      </div>
+
+      <!-- INNER VOICE PACKAGES -->
+      <div class="pkg-category">
+        <h2 class="pkg-category-title">Inner-Voice Insight Only Packages</h2>
+        <div class="pkg-grid">
+
+          <!-- Single OA Scan -->
+          <div class="pkg-card">
+            <div class="pkg-name">Inner-Voice Insight</div>
+            <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;">Single OA Scan</div>
+            <div class="pkg-price">$75</div>
+            <ul class="pkg-features">
+              <li>Full Inner-Voice OA scan</li>
+              <li>Frequency optimization tones</li>
+              <li>Fifteen-minute review session</li>
+            </ul>
+            <a href="booking.html?package=inner-voice-insight&price=75" class="btn-select">Select Package</a>
+          </div>
+
+          <!-- Weekly Balance -->
+          <div class="pkg-card">
+            <div class="pkg-name">Inner-Voice Weekly Balance</div>
+            <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;">One-Month Package</div>
+            <div class="pkg-price">$250</div>
+            <ul class="pkg-features">
+              <li>Four OA scans</li>
+              <li>Weekly tones</li>
+              <li>Four fifteen-minute review sessions</li>
+            </ul>
+            <a href="booking.html?package=inner-voice-weekly&price=250" class="btn-select">Select Package</a>
+          </div>
+
+          <!-- Evolution -->
+          <div class="pkg-card">
+            <div class="pkg-name">Inner-Voice Evolution</div>
+            <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;">Three-Month Package</div>
+            <div class="pkg-price">$800</div>
+            <ul class="pkg-features">
+              <li>Weekly scans (twelve total)</li>
+              <li>Weekly tones</li>
+              <li>Weekly review sessions</li>
+              <li>Monthly progress snapshot</li>
+            </ul>
+            <a href="booking.html?package=inner-voice-evolution&price=800" class="btn-select">Select Package</a>
+          </div>
+
+          <!-- Ascension -->
+          <div class="pkg-card">
+            <div class="pkg-name">Inner-Voice Ascension</div>
+            <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;">Six-Month Package</div>
+            <div class="pkg-price">$1,500</div>
+            <ul class="pkg-features">
+              <li>Weekly scans (twenty-four total)</li>
+              <li>Weekly tones</li>
+              <li>Weekly review sessions</li>
+              <li>Emotional trends report each month</li>
+            </ul>
+            <a href="booking.html?package=inner-voice-ascension&price=1500" class="btn-select">Select Package</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <h3>Royal Phoenix Health &amp; Wellness</h3>
+    <p class="tagline-footer">Rise. Restore. Reclaim Your Power.</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="packages.html">Packages</a>
+      <a href="ao-scan.html">AO Technology</a>
     </nav>
+    <p class="copy">© 2026 Royal Phoenix Health &amp; Wellness. All rights reserved.</p>
+  </footer>
 
-    <!-- Hero -->
-    <section class="page-hero packages-hero-simple">
-        <div class="container">
-            <h1 class="page-title-simple">Package Overview & Sales Page</h1>
-            <p class="page-motto">"Rise into your highest self. Your transformation begins now!"</p>
-        </div>
-    </section>
-
-    <!-- At-a-Glance Package Summary -->
-    <section class="packages-summary">
-        <div class="container">
-            <h2 class="section-title-simple centered">At-a-Glance Package Summary</h2>
-            
-            <!-- Combination Packages Section -->
-            <div class="package-category">
-                <h3 class="category-title">Combination Health Coach & Inner-Voice Insight Packages</h3>
-                
-                <div class="package-list">
-                    <!-- Phoenix Spark -->
-                    <div class="package-item-simple">
-                        <div class="package-simple-header">
-                            <h4 class="package-simple-name">Phoenix Spark — Single Coaching Session ($210)</h4>
-                        </div>
-                        <ul class="package-simple-features">
-                            <li>Includes one AO Inner-Voice Scan</li>
-                            <li>Targeted coaching</li>
-                            <li>Personalized frequency tones</li>
-                            <li>Clarity & emotional balancing</li>
-                        </ul>
-                        <div class="package-simple-footer">
-                            <a href="booking.html?package=phoenix-spark&price=210" class="btn btn-select">Select Package</a>
-                        </div>
-                    </div>
-
-                    <!-- Phoenix Ignite -->
-                    <div class="package-item-simple">
-                        <div class="package-simple-header">
-                            <h4 class="package-simple-name">Phoenix Ignite — 1-Month Intensive ($500)</h4>
-                        </div>
-                        <ul class="package-simple-features">
-                            <li>Weekly coaching (4 sessions)</li>
-                            <li>Weekly OA scans (4 total)</li>
-                            <li>Frequency tones</li>
-                            <li>Personalized blueprint session</li>
-                        </ul>
-                        <div class="package-simple-footer">
-                            <a href="booking.html?package=phoenix-ignite&price=500" class="btn btn-select">Select Package</a>
-                        </div>
-                    </div>
-
-                    <!-- Phoenix Reset -->
-                    <div class="package-item-simple featured-simple">
-                        <div class="package-simple-header">
-                            <h4 class="package-simple-name">Phoenix Reset — 3-Month Transformation Package ($1,500)</h4>
-                            <span class="popular-badge">Most Popular</span>
-                        </div>
-                        <ul class="package-simple-features">
-                            <li>Two coaching sessions/month (6 total)</li>
-                            <li>Weekly OA Inner-Voice scans (12 total)</li>
-                            <li>Frequency optimization tones</li>
-                            <li>Monthly progress check-ins</li>
-                            <li>Personalized Wellness Action Plan</li>
-                            <li>Text/email accountability</li>
-                        </ul>
-                        <div class="package-simple-footer">
-                            <a href="booking.html?package=phoenix-reset&price=1500" class="btn btn-select btn-primary">Select Package</a>
-                        </div>
-                    </div>
-
-                    <!-- Phoenix Rebirth -->
-                    <div class="package-item-simple">
-                        <div class="package-simple-header">
-                            <h4 class="package-simple-name">Phoenix Rebirth — 6-Month Premium Coaching Package ($2,500)</h4>
-                        </div>
-                        <ul class="package-simple-features">
-                            <li>Two to Four coaching sessions/month</li>
-                            <li>Weekly OA scans (24 total)</li>
-                            <li>Full plan customization</li>
-                            <li>Priority messaging support</li>
-                            <li>Monthly rebalance review</li>
-                            <li>One emergency clarity call/month</li>
-                        </ul>
-                        <div class="package-simple-footer">
-                            <a href="booking.html?package=phoenix-rebirth&price=2500" class="btn btn-select">Select Package</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Inner-Voice Only Packages -->
-            <div class="package-category">
-                <h3 class="category-title">Inner-Voice Insight Only Packages</h3>
-                
-                <div class="package-list">
-                    <!-- Inner-Voice Insight -->
-                    <div class="package-item-simple">
-                        <div class="package-simple-header">
-                            <h4 class="package-simple-name">Inner-Voice Insight — Single OA Scan ($75)</h4>
-                        </div>
-                        <ul class="package-simple-features">
-                            <li>Full Inner-Voice OA scan</li>
-                            <li>Frequency optimization tones</li>
-                            <li>15-minute review session</li>
-                        </ul>
-                        <div class="package-simple-footer">
-                            <a href="booking.html?package=inner-voice-insight&price=75" class="btn btn-select">Select Package</a>
-                        </div>
-                    </div>
-
-                    <!-- Inner-Voice Weekly Balance -->
-                    <div class="package-item-simple">
-                        <div class="package-simple-header">
-                            <h4 class="package-simple-name">Inner-Voice Weekly Balance — 1-Month Package ($250)</h4>
-                        </div>
-                        <ul class="package-simple-features">
-                            <li>Four OA scans</li>
-                            <li>Weekly tones</li>
-                            <li>Four 15-minute review sessions</li>
-                        </ul>
-                        <div class="package-simple-footer">
-                            <a href="booking.html?package=inner-voice-weekly&price=250" class="btn btn-select">Select Package</a>
-                        </div>
-                    </div>
-
-                    <!-- Inner-Voice Evolution -->
-                    <div class="package-item-simple">
-                        <div class="package-simple-header">
-                            <h4 class="package-simple-name">Inner-Voice Evolution — 3-Month Package ($800)</h4>
-                        </div>
-                        <ul class="package-simple-features">
-                            <li>Weekly scans (12 total)</li>
-                            <li>Weekly tones</li>
-                            <li>Weekly review sessions</li>
-                            <li>Monthly progress snapshot</li>
-                        </ul>
-                        <div class="package-simple-footer">
-                            <a href="booking.html?package=inner-voice-evolution&price=800" class="btn btn-select">Select Package</a>
-                        </div>
-                    </div>
-
-                    <!-- Inner-Voice Ascension -->
-                    <div class="package-item-simple">
-                        <div class="package-simple-header">
-                            <h4 class="package-simple-name">Inner-Voice Ascension — 6-Month Package ($1,500)</h4>
-                        </div>
-                        <ul class="package-simple-features">
-                            <li>Weekly scans (24 total)</li>
-                            <li>Weekly tones</li>
-                            <li>Weekly review sessions</li>
-                            <li>Emotional trends report each month</li>
-                        </ul>
-                        <div class="package-simple-footer">
-                            <a href="booking.html?package=inner-voice-ascension&price=1500" class="btn btn-select">Select Package</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Royal Phoenix Health & Wellness</h3>
-                    <p>Rise. Restore. Reclaim Your Power.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="packages.html">Packages</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Royal Phoenix Health & Wellness. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>

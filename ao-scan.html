@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AO Technology | Royal Phoenix Health & Wellness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2d45;
+      --gold: #b8860b;
+      --gold-light: #d4a843;
+      --cream: #f5f0e8;
+      --warm-white: #faf8f4;
+      --text: #2c2c2c;
+      --text-light: #5a5a5a;
+      --red-accent: #8b2a2a;
+    }
+
+    body { font-family: 'Jost', sans-serif; color: var(--text); background: var(--warm-white); font-weight: 300; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--warm-white);
+      border-bottom: 1px solid rgba(26,45,69,0.1);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 80px;
+    }
+    .nav-logo img { height: 60px; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text); font-size: 0.9rem;
+      letter-spacing: 0.05em; text-transform: uppercase; font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-cta a {
+      background: var(--navy); color: #fff !important;
+      padding: 0.6rem 1.4rem; border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta a:hover { background: var(--gold) !important; }
+
+    /* HERO */
+    .page-hero {
+      padding: 160px 2rem 100px;
+      text-align: center;
+      background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(184,134,11,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(212,168,67,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .page-hero .eyebrow {
+      font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 1rem;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300; color: #fff;
+      line-height: 1.2; margin-bottom: 1.5rem;
+    }
+    .page-hero p {
+      max-width: 680px; margin: 0 auto;
+      font-size: 1.05rem; line-height: 1.9; color: rgba(255,255,255,0.8);
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 2rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400; color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .section-title::after {
+      content: ''; display: block;
+      width: 48px; height: 2px; background: var(--red-accent);
+      margin-top: 0.5rem; margin-bottom: 2rem;
+    }
+
+    .prose p {
+      font-size: 1.05rem; line-height: 1.9;
+      color: var(--text); margin-bottom: 1.25rem;
+    }
+
+    /* HOW IT WORKS */
+    .how { background: var(--warm-white); }
+
+    /* SOUND THERAPY */
+    .sound { background: var(--cream); }
+    .sound .prose p:last-child { margin-bottom: 0; }
+
+    /* SUPPORT */
+    .support { background: var(--warm-white); }
+    .support-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem; margin-top: 0.5rem;
+    }
+    .support-item {
+      background: var(--cream); padding: 1.5rem;
+      border-left: 3px solid var(--gold);
+    }
+    .support-item p { font-size: 0.95rem; color: var(--text); line-height: 1.6; }
+
+    /* COMPLEMENT */
+    .complement { background: var(--cream); }
+    .complement p { font-size: 1.05rem; line-height: 1.9; color: var(--text); margin-bottom: 1.25rem; }
+
+    /* IS IT RIGHT */
+    .right-for-you { background: var(--warm-white); }
+    .questions-list {
+      list-style: none; margin-top: 1rem; margin-bottom: 2.5rem;
+    }
+    .questions-list li {
+      padding: 1.25rem 1.5rem;
+      background: var(--cream);
+      border-left: 3px solid var(--navy);
+      margin-bottom: 0.75rem;
+      font-size: 1rem; line-height: 1.7; color: var(--text);
+    }
+    .right-for-you .answer-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; color: var(--gold);
+      font-size: 1.15rem; margin-bottom: 2rem;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: var(--navy); color: #fff;
+      text-align: center; padding: 100px 2rem;
+    }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    .cta-section p { max-width: 500px; margin: 0 auto 2.5rem; opacity: 0.8; line-height: 1.7; }
+    .btn-gold {
+      background: var(--gold); color: #fff;
+      padding: 0.9rem 2.2rem; border-radius: 2px;
+      text-decoration: none; font-size: 0.9rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: background 0.2s; display: inline-block;
+      margin: 0 0.5rem;
+    }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.4); color: #fff;
+      padding: 0.9rem 2.2rem; border-radius: 2px;
+      text-decoration: none; font-size: 0.9rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: all 0.2s; display: inline-block;
+      margin: 0 0.5rem;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    footer {
+      background: var(--navy); color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem; text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    footer h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #fff; font-weight: 400; margin-bottom: 0.5rem; }
+    footer p.tagline-footer { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold-light); margin-bottom: 1.5rem; }
+    footer nav.footer-nav { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    footer nav.footer-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    footer nav.footer-nav a:hover { color: var(--gold-light); }
+    footer .copy { font-size: 0.8rem; opacity: 0.5; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="https://phoenix2-opal.vercel.app/logo.png" alt="Royal Phoenix Health & Wellness" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="ao-scan.html" class="active">AO Technology</a></li>
+      <li class="nav-cta"><a href="booking.html">Begin Your Journey</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">Bioenergetic Wellness</p>
+    <h1>Understanding AO Technology<br>&amp; Sound Therapy</h1>
+    <p>At Royal Phoenix Wellness, we use advanced bioenergetic technology designed to support your body's natural balance and healing process — one frequency at a time.</p>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="container">
+      <h2 class="section-title">How AO Technology Works</h2>
+      <div class="prose">
+        <p>Everything in the body operates through energy and vibration — including our cells, organs, and systems. When the body is functioning optimally, these frequencies remain balanced. However, stress, illness, environmental toxins, emotional strain, and lifestyle factors can create energetic disruptions.</p>
+        <p>AO technology works by analyzing the body's energetic frequencies through a digital scan. This process compares your body's energetic patterns to a large database of frequency signatures associated with organs, nutrients, emotional patterns, and other wellness indicators.</p>
+        <p>The scan does not diagnose or treat medical conditions, but it can provide insight into areas of potential energetic stress or imbalance. This information can help guide lifestyle choices, wellness practices, and supportive strategies for your health journey.</p>
+        <p>We personally use this technology as part of our own wellness journey, and it has helped us gain deeper insight into the body while supporting our path toward balance and healing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOUND THERAPY -->
+  <section class="sound">
+    <div class="container">
+      <h2 class="section-title">What Is Sound Therapy?</h2>
+      <div class="prose">
+        <p>Sound therapy is a form of frequency-based wellness support that uses specific tones and vibrations designed to encourage balance within the body's energetic systems.</p>
+        <p>After the scan identifies areas that may benefit from support, the system generates personalized frequency tones that are delivered through sound. These tones are intended to help the body move back toward a more balanced energetic state.</p>
+        <p>Sound therapy has been used in various forms for centuries — from singing bowls to tuning forks. Modern frequency technology simply allows us to apply these concepts in a more targeted and personalized way.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT SUPPORTS YOU -->
+  <section class="support">
+    <div class="container">
+      <h2 class="section-title">How This Can Support Your Wellness Journey</h2>
+      <p style="margin-bottom:2rem;color:var(--text-light);">Every person's health journey is unique. Frequency-based wellness tools like AO technology may help individuals:</p>
+      <div class="support-grid">
+        <div class="support-item"><p>Gain insight into potential energetic stressors within the body</p></div>
+        <div class="support-item"><p>Support relaxation and nervous system balance</p></div>
+        <div class="support-item"><p>Encourage overall energetic harmony</p></div>
+        <div class="support-item"><p>Complement lifestyle changes such as nutrition, movement, and mindfulness</p></div>
+        <div class="support-item"><p>Increase awareness of areas that may benefit from additional support</p></div>
+      </div>
+      <p style="margin-top:2rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:1.1rem;">Many people find that integrating energetic wellness tools alongside healthy habits can help them feel more connected to their bodies and more empowered in their healing journey.</p>
+    </div>
+  </section>
+
+  <!-- COMPLEMENT -->
+  <section class="complement">
+    <div class="container">
+      <h2 class="section-title">A Complement to Your Personal Wellness Plan</h2>
+      <p>AO technology and sound therapy are not meant to replace medical care. Instead, they are intended to complement your overall wellness plan by providing additional insight and supportive frequency-based relaxation.</p>
+      <p>At Royal Phoenix Wellness, our mission is to empower you with tools, knowledge, and guidance so you can take an active role in your well-being and move forward on your path to greater balance and vitality.</p>
+    </div>
+  </section>
+
+  <!-- IS IT RIGHT FOR YOU -->
+  <section class="right-for-you">
+    <div class="container">
+      <h2 class="section-title">Is an AO Scan Right for You?</h2>
+      <p style="margin-bottom:1.5rem;color:var(--text-light);">Many people come to Royal Phoenix Wellness because they feel something in their body is out of balance, even if they haven't found clear answers yet. Ask yourself:</p>
+      <ul class="questions-list">
+        <li>Do you feel like something in your body just isn't quite right, even if tests or treatments haven't given you the full picture?</li>
+        <li>Are you looking for a deeper understanding of your body so you can make more informed choices about your health and wellness?</li>
+        <li>Are you open to exploring frequency-based wellness tools that may help support balance, relaxation, and overall well-being?</li>
+      </ul>
+      <p class="answer-note">If you answered yes to any of these questions, an AO frequency scan may be a helpful step in gaining new insight into your wellness journey.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Explore Our Session Options</h2>
+      <p>Find the package that's right for you and take the next step toward energetic balance and well-being.</p>
+      <div>
+        <a href="packages.html" class="btn-gold">View Packages</a>
+        <a href="booking.html" class="btn-outline">Begin Your Journey</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <h3>Royal Phoenix Health &amp; Wellness</h3>
+    <p class="tagline-footer">Rise. Restore. Reclaim Your Power.</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="packages.html">Packages</a>
+      <a href="ao-scan.html">AO Technology</a>
+    </nav>
+    <p class="copy">© 2026 Royal Phoenix Health &amp; Wellness. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

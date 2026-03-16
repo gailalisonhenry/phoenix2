@@ -1,179 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Royal Phoenix Health & Wellness</title>
-    <meta name="description" content="Learn about the founder's journey from autoimmune diagnosis to remission and the holistic approach to healing.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Royal Phoenix Health & Wellness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2d45;
+      --gold: #b8860b;
+      --gold-light: #d4a843;
+      --cream: #f5f0e8;
+      --warm-white: #faf8f4;
+      --text: #2c2c2c;
+      --text-light: #5a5a5a;
+      --red-accent: #8b2a2a;
+    }
+
+    body { font-family: 'Jost', sans-serif; color: var(--text); background: var(--warm-white); font-weight: 300; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--warm-white);
+      border-bottom: 1px solid rgba(26,45,69,0.1);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 80px;
+    }
+    .nav-logo img { height: 60px; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text); font-size: 0.9rem;
+      letter-spacing: 0.05em; text-transform: uppercase; font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-cta a {
+      background: var(--navy); color: #fff !important;
+      padding: 0.6rem 1.4rem; border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta a:hover { background: var(--gold) !important; }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 160px 2rem 80px;
+      text-align: center;
+      background: var(--warm-white);
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300; color: var(--navy);
+      line-height: 1.2; margin-bottom: 1.5rem;
+    }
+    .page-hero p {
+      max-width: 680px; margin: 0 auto;
+      font-size: 1.1rem; line-height: 1.9; color: var(--text-light);
+    }
+
+    section { padding: 90px 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 400; color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .section-title::after {
+      content: ''; display: block;
+      width: 48px; height: 2px; background: var(--red-accent);
+      margin-top: 0.5rem; margin-bottom: 2rem;
+    }
+
+    /* STORY */
+    .story { background: var(--cream); }
+    .story p { font-size: 1.05rem; line-height: 1.9; color: var(--text); margin-bottom: 1.25rem; }
+    .story .highlight {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 500; color: var(--navy);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem; margin: 2rem 0;
+      font-style: italic;
+    }
+    .story blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-style: italic;
+      color: var(--gold); text-align: center;
+      padding: 2rem; margin: 2rem 0;
+      border-top: 1px solid rgba(184,134,11,0.2);
+      border-bottom: 1px solid rgba(184,134,11,0.2);
+    }
+
+    /* APPROACH */
+    .approach { background: var(--warm-white); }
+    .approach-sub {
+      font-size: 1rem; color: var(--text-light);
+      margin-bottom: 2.5rem; margin-top: -1rem;
+    }
+    .approach-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; margin-bottom: 2.5rem;
+    }
+    .approach-card {
+      background: var(--cream); padding: 2rem;
+      border-top: 3px solid var(--gold-light);
+    }
+    .approach-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; color: var(--navy); margin-bottom: 0.75rem; font-weight: 500;
+    }
+    .approach-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.7; }
+    .approach-footer {
+      font-size: 1rem; line-height: 1.9; color: var(--text);
+    }
+
+    /* VALUES */
+    .values { background: var(--cream); }
+    .values-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-top: 0.5rem;
+    }
+    .value-item {
+      background: var(--warm-white); padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 0.75rem;
+    }
+    .value-item .diamond { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .value-item span { font-size: 0.95rem; color: var(--text); line-height: 1.5; }
+    .values-footer {
+      margin-top: 2rem; text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; color: var(--text-light); font-size: 1rem;
+    }
+
+    /* WHY */
+    .why { background: var(--warm-white); }
+    .why p { font-size: 1.05rem; line-height: 1.9; color: var(--text); margin-bottom: 1.25rem; }
+    .why em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; color: var(--navy);
+    }
+
+    /* INVITATION */
+    .invitation {
+      background: var(--navy); color: #fff;
+      text-align: center; padding: 100px 2rem;
+    }
+    .invitation h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    .invitation p {
+      max-width: 540px; margin: 0 auto 1rem;
+      line-height: 1.8; opacity: 0.85;
+    }
+    .invitation .italic-invite {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; color: var(--gold-light);
+      font-size: 1.15rem; margin-bottom: 2.5rem;
+    }
+    .btn-gold {
+      background: var(--gold); color: #fff;
+      padding: 0.9rem 2.2rem; border-radius: 2px;
+      text-decoration: none; font-size: 0.9rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: background 0.2s; display: inline-block;
+    }
+    .btn-gold:hover { background: var(--gold-light); }
+
+    footer {
+      background: var(--navy); color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem; text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    footer h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #fff; font-weight: 400; margin-bottom: 0.5rem; }
+    footer p.tagline-footer { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold-light); margin-bottom: 1.5rem; }
+    footer nav.footer-nav { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    footer nav.footer-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    footer nav.footer-nav a:hover { color: var(--gold-light); }
+    footer .copy { font-size: 0.8rem; opacity: 0.5; }
+
+    @media (max-width: 768px) {
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .approach-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="Royal Phoenix Health & Wellness" class="logo-img">
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="packages.html">Packages</a></li>
-                <li><a href="#invitation" class="nav-cta">Begin Your Journey</a></li>
-            </ul>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="https://phoenix2-opal.vercel.app/logo.png" alt="Royal Phoenix Health & Wellness" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="ao-scan.html">AO Technology</a></li>
+      <li class="nav-cta"><a href="booking.html">Begin Your Journey</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <h1>About Royal Phoenix<br>Health &amp; Wellness</h1>
+    <p>Healing isn't about fixing what's broken. It's about remembering who you are beneath the stress, the pain, and the survival patterns that once kept you safe.</p>
+    <p style="margin-top:1rem;">Royal Phoenix Health &amp; Wellness was created for those who feel disconnected from their bodies, overwhelmed by life, or stuck in cycles they can't seem to break — no matter how hard they try.</p>
+    <p style="margin-top:1rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:1.1rem;">If you're here, it's likely because something inside you knows there's more healing available to you... and you're ready to rise.</p>
+  </div>
+
+  <!-- OUR STORY -->
+  <section class="story">
+    <div class="container">
+      <h2 class="section-title">Our Story</h2>
+      <p>We didn't arrive at this work by accident.</p>
+      <p>A few years ago, our founder was diagnosed with an autoimmune disease — an experience that deeply changed her relationship with her body. There were days when inflammation, fatigue, and pain made even basic movement feel impossible. Living with that level of uncertainty taught us firsthand how isolating and overwhelming chronic illness can be.</p>
+      <p>While medication was part of the journey, we felt called to understand <em>why</em> the body was responding the way it was. We began focusing on the same fundamentals we now use at Royal Phoenix Health &amp; Wellness: nervous system regulation, stress and emotional awareness, energetic balance, and addressing root causes rather than symptoms alone.</p>
+      <p>With time, patience, and compassion, healing began. Under appropriate guidance, medication was no longer needed — and today, we stand in remission.</p>
+      <div class="highlight">That journey taught us something powerful: The body is not broken. It is adaptive, intelligent, and always communicating.</div>
+      <p>Royal Phoenix was born from that lived experience. We don't just guide others through healing — we understand it from the inside out. We know what it's like to struggle, to grieve your old sense of normal, and to rebuild trust with your body one step at a time.</p>
+      <blockquote>"We believe healing is possible — even when it feels unreachable — because we've lived it."</blockquote>
+    </div>
+  </section>
+
+  <!-- OUR APPROACH -->
+  <section class="approach">
+    <div class="container">
+      <h2 class="section-title">Our Approach</h2>
+      <p class="approach-sub">At Royal Phoenix Health &amp; Wellness, healing is never rushed, forced, or one-size-fits-all.</p>
+      <div class="approach-grid">
+        <div class="approach-card">
+          <h3>Holistic</h3>
+          <p>Addressing the physical, emotional, energetic, and mental layers of well-being</p>
         </div>
+        <div class="approach-card">
+          <h3>Root-cause focused</h3>
+          <p>Going beneath symptoms to understand what your body is asking for</p>
+        </div>
+        <div class="approach-card">
+          <h3>Nervous-system informed</h3>
+          <p>Creating safety before change</p>
+        </div>
+        <div class="approach-card">
+          <h3>Client-centered</h3>
+          <p>Honoring your pace, boundaries, and lived experience</p>
+        </div>
+      </div>
+      <p class="approach-footer">This work blends intuitive insight with practical tools to help you reconnect with your body, restore balance, and build sustainable wellness from the inside out.</p>
+    </div>
+  </section>
+
+  <!-- OUR VALUES -->
+  <section class="values">
+    <div class="container">
+      <h2 class="section-title">Our Values</h2>
+      <div class="values-grid">
+        <div class="value-item"><span class="diamond">◆</span><span>Compassion over pressure</span></div>
+        <div class="value-item"><span class="diamond">◆</span><span>Safety before transformation</span></div>
+        <div class="value-item"><span class="diamond">◆</span><span>Awareness creates choice</span></div>
+        <div class="value-item"><span class="diamond">◆</span><span>Healing happens in layers</span></div>
+        <div class="value-item"><span class="diamond">◆</span><span>You are not broken — you are adaptive</span></div>
+      </div>
+      <p class="values-footer">These values guide every session, every recommendation, and every interaction.</p>
+    </div>
+  </section>
+
+  <!-- WHY ROYAL PHOENIX -->
+  <section class="why">
+    <div class="container">
+      <h2 class="section-title">Why "Royal Phoenix"</h2>
+      <p>The phoenix symbolizes rebirth — but the <em>Royal Phoenix</em> represents rising with dignity, self-trust, and sovereignty.</p>
+      <p>This space exists to support people who are ready to reclaim their power, honor their bodies, and step into a new chapter — not by becoming someone else, but by returning to themselves.</p>
+    </div>
+  </section>
+
+  <!-- AN INVITATION -->
+  <section class="invitation" id="invitation">
+    <div class="container">
+      <h2>An Invitation</h2>
+      <p>You don't need to have everything figured out to begin.</p>
+      <p>You just need willingness, curiosity, and the desire to feel better in your body and life.</p>
+      <p class="italic-invite">If you're ready to explore what healing could look like for you, we would be honored to walk alongside you.</p>
+      <a href="packages.html" class="btn-gold">Explore Packages</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <h3>Royal Phoenix Health &amp; Wellness</h3>
+    <p class="tagline-footer">Rise. Restore. Reclaim Your Power.</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="packages.html">Packages</a>
+      <a href="ao-scan.html">AO Technology</a>
     </nav>
+    <p class="copy">© 2026 Royal Phoenix Health &amp; Wellness. All rights reserved.</p>
+  </footer>
 
-    <!-- Hero -->
-    <section class="page-hero">
-        <div class="container">
-            <h1 class="page-title">About Royal Phoenix Health & Wellness</h1>
-            <p class="page-subtitle">Healing isn't about fixing what's broken. It's about remembering who you are beneath the stress, the pain, and the survival patterns that once kept you safe.</p>
-        </div>
-    </section>
-
-    <!-- Introduction -->
-    <section class="about-intro">
-        <div class="container">
-            <div class="about-intro-content">
-                <p>Royal Phoenix Health & Wellness was created for those who feel disconnected from their bodies, overwhelmed by life, or stuck in cycles they can't seem to break — no matter how hard they try.</p>
-                <p class="about-intro-emphasis">If you're here, it's likely because something inside you knows there's more healing available to you... and you're ready to rise.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- My Story -->
-    <section class="story">
-        <div class="container">
-            <h2 class="section-title">My Story</h2>
-            <div class="story-content">
-                <p class="story-opening">I didn't arrive at this work by accident.</p>
-                
-                <p>A few years ago, I was diagnosed with an autoimmune disease — an experience that deeply changed my relationship with my body. There were days when inflammation, fatigue, and pain made even basic movement feel impossible. Living with that level of uncertainty taught me firsthand how isolating and overwhelming chronic illness can be.</p>
-                
-                <p>While medication was part of my journey, I felt called to understand why my body was responding the way it was. I began focusing on the same fundamentals I now use at Royal Phoenix Health & Wellness: nervous system regulation, stress and emotional awareness, energetic balance, and addressing root causes rather than symptoms alone.</p>
-                
-                <p>With time, patience, and compassion, my body began to heal. Under appropriate guidance, I was able to come off medication — and today, I am in remission.</p>
-                
-                <div class="story-insight">
-                    <p>That journey taught me something powerful:</p>
-                    <p class="story-insight-text">The body is not broken. It is adaptive, intelligent, and always communicating.</p>
-                </div>
-                
-                <p>Royal Phoenix was born from that lived experience. I don't just guide others through healing — I understand it from the inside out. I know what it's like to struggle, to grieve your old sense of normal, and to rebuild trust with your body one step at a time.</p>
-                
-                <blockquote class="story-quote">
-                    "I believe healing is possible — even when it feels unreachable — because I've lived it."
-                </blockquote>
-            </div>
-        </div>
-    </section>
-
-    <!-- My Approach -->
-    <section class="about-approach">
-        <div class="container">
-            <h2 class="section-title">My Approach</h2>
-            <p class="about-approach-intro">At Royal Phoenix Health & Wellness, healing is never rushed, forced, or one-size-fits-all.</p>
-            
-            <div class="approach-principles">
-                <div class="principle">
-                    <h3>Holistic</h3>
-                    <p>Addressing the physical, emotional, energetic, and mental layers of well-being</p>
-                </div>
-                <div class="principle">
-                    <h3>Root-cause focused</h3>
-                    <p>Going beneath symptoms to understand what your body is asking for</p>
-                </div>
-                <div class="principle">
-                    <h3>Nervous-system informed</h3>
-                    <p>Creating safety before change</p>
-                </div>
-                <div class="principle">
-                    <h3>Client-centered</h3>
-                    <p>Honoring your pace, boundaries, and lived experience</p>
-                </div>
-            </div>
-            
-            <p class="about-approach-footer">This work blends intuitive insight with practical tools to help you reconnect with your body, restore balance, and build sustainable wellness from the inside out.</p>
-        </div>
-    </section>
-
-    <!-- Values -->
-    <section class="values">
-        <div class="container">
-            <h2 class="section-title">My Values</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-marker">◆</div>
-                    <h3>Compassion over pressure</h3>
-                </div>
-                <div class="value-card">
-                    <div class="value-marker">◆</div>
-                    <h3>Safety before transformation</h3>
-                </div>
-                <div class="value-card">
-                    <div class="value-marker">◆</div>
-                    <h3>Awareness creates choice</h3>
-                </div>
-                <div class="value-card">
-                    <div class="value-marker">◆</div>
-                    <h3>Healing happens in layers</h3>
-                </div>
-                <div class="value-card">
-                    <div class="value-marker">◆</div>
-                    <h3>You are not broken — you are adaptive</h3>
-                </div>
-            </div>
-            <p class="values-footer">These values guide every session, every recommendation, and every interaction.</p>
-        </div>
-    </section>
-
-    <!-- Why Royal Phoenix -->
-    <section class="why-name">
-        <div class="container">
-            <h2 class="section-title">Why "Royal Phoenix"</h2>
-            <div class="why-name-content">
-                <p>The phoenix symbolizes rebirth — but the <em>Royal Phoenix</em> represents rising with dignity, self-trust, and sovereignty.</p>
-                <p class="why-name-purpose">This space exists to support people who are ready to reclaim their power, honor their bodies, and step into a new chapter — not by becoming someone else, but by returning to themselves.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Invitation -->
-    <section class="invitation" id="invitation">
-        <div class="container">
-            <div class="invitation-content">
-                <h2>An Invitation</h2>
-                <p>You don't need to have everything figured out to begin.</p>
-                <p>You just need willingness, curiosity, and the desire to feel better in your body and life.</p>
-                <p class="invitation-close">If you're ready to explore what healing could look like for you, I would be honored to walk alongside you.</p>
-                <a href="packages.html" class="btn btn-primary btn-large">Explore Packages</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Royal Phoenix Health & Wellness</h3>
-                    <p>Rise. Restore. Reclaim Your Power.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="packages.html">Packages</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Royal Phoenix Health & Wellness. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
