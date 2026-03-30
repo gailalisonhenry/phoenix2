@@ -412,6 +412,56 @@
       color: var(--gold-muted);
     }
 
+    /* ── MEDICAL DISCLAIMER ── */
+    .disclaimer-section {
+      position: relative;
+      z-index: 1;
+      padding: 0 24px 72px;
+      opacity: 0;
+      animation: fadeUp 1s ease 1.1s forwards;
+    }
+
+    .disclaimer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      border: 1px solid rgba(201,169,110,0.12);
+      border-left: 3px solid rgba(201,169,110,0.35);
+      padding: 32px 40px;
+      background: rgba(255,255,255,0.015);
+      border-radius: 2px;
+    }
+
+    .disclaimer-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-muted);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .disclaimer-eyebrow::before {
+      content: '⚕';
+      font-size: 0.75rem;
+      opacity: 0.7;
+    }
+
+    .disclaimer-text {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    @media (max-width: 700px) {
+      .disclaimer-inner { padding: 24px 22px; }
+    }
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
@@ -548,6 +598,16 @@
   </div>
 </div>
 
+<!-- ── MEDICAL DISCLAIMER ── -->
+<div class="disclaimer-section">
+  <div class="disclaimer-inner">
+    <p class="disclaimer-eyebrow">Medical Disclaimer</p>
+    <p class="disclaimer-text">
+      The services offered at Royal Phoenix Health &amp; Wellness — including AO Scan technology and sound frequency sessions — are intended for educational and complementary wellness purposes only. These offerings are not medical procedures and are not intended to diagnose, treat, cure, or prevent any disease or medical condition, nor should they be considered a substitute for professional medical advice or care. Individual experiences and results may vary. We strongly encourage you to consult with a qualified, licensed healthcare provider before beginning any new wellness program, especially if you are pregnant, nursing, or managing an existing health condition. By engaging with our services, you acknowledge their supportive and complementary nature — designed to work alongside, not in replacement of, conventional medical treatment.
+    </p>
+  </div>
+</div>
+
 <!-- ── FOOTER NOTE ── -->
 <div class="footer-note">
   <div class="footer-divider">
@@ -555,7 +615,7 @@
     <div class="phoenix-icon">⟡</div>
     <span></span>
   </div>
-  <p>All sessions are designed to support your body's natural balance using frequency-based technology and guided wellness coaching.</p>
+  <p>All sessions are designed to support your body's natural balance through frequency-based technology and compassionate wellness coaching — a complement to, not a replacement for, your personal healthcare journey.</p>
 </div>
 
 <script>
