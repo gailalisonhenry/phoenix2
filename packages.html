@@ -1,581 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Signature Offerings | Royal Phoenix Health & Wellness</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packages | Royal Phoenix Health & Wellness</title>
+    <meta name="description" content="Explore Royal Phoenix Health & Wellness signature offerings and coaching packages.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Packages page scoped styles ── */
 
-    :root {
-      --bg:         #1a1016;
-      --bg2:        #231620;
-      --gold:       #c9a96e;
-      --gold-light: #e2c98b;
-      --gold-muted: #a07f50;
-      --cream:      #f4ead8;
-      --rose:       #b87d86;
-      --text:       #e8ddd0;
-      --muted:      #9e8e80;
-      --border:     rgba(201,169,110,0.22);
-    }
+        .packages-hero {
+            padding-top: 160px !important;
+            padding-bottom: 60px;
+            text-align: center;
+            background: #f0ebe3;
+            margin-top: 0 !important;
+        }
 
-    html { scroll-behavior: smooth; }
+        .packages-hero .page-subtitle {
+            max-width: 560px;
+            margin: 0 auto;
+        }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      line-height: 1.75;
-      overflow-x: hidden;
-    }
+        /* Grid */
+        .packages-section {
+            padding: 60px 24px 48px;
+            background: #fff;
+        }
 
-    /* ── NOISE TEXTURE ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.35;
-      pointer-events: none;
-      z-index: 0;
-    }
+        .packages-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
 
-    /* ── AMBIENT GLOW ── */
-    .glow-top {
-      position: fixed;
-      top: -200px; left: 50%;
-      transform: translateX(-50%);
-      width: 700px; height: 500px;
-      background: radial-gradient(ellipse, rgba(201,169,110,0.12) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
 
-    /* ── HEADER ── */
-    header {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 90px 24px 60px;
-    }
+        /* Card */
+        .pkg-card {
+            position: relative;
+            background: #faf8f5;
+            border: 1px solid #e0d8cc;
+            border-radius: 4px;
+            padding: 40px 32px 44px;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+        }
 
-    .eyebrow {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.1s forwards;
-    }
+        .pkg-card:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.09);
+            transform: translateY(-4px);
+            border-color: #c9a96e;
+        }
 
-    .site-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      font-weight: 300;
-      color: var(--cream);
-      line-height: 1.1;
-      letter-spacing: 0.02em;
-      opacity: 0;
-      animation: fadeUp 0.9s ease 0.25s forwards;
-    }
+        .pkg-card.featured {
+            border-color: #c9a96e;
+            background: #fdf8f0;
+        }
 
-    .site-title em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
+        .pkg-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -1px; right: 24px;
+            background: #c9a96e;
+            color: #fff;
+            font-family: 'Newsreader', serif;
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 0 0 4px 4px;
+        }
 
-    .divider-gold {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin: 28px auto 24px;
-      opacity: 0;
-      animation: fadeUp 0.9s ease 0.4s forwards;
-    }
+        .pkg-number {
+            font-family: 'Newsreader', serif;
+            font-size: 0.72rem;
+            color: #b8a88a;
+            letter-spacing: 0.18em;
+            margin-bottom: 16px;
+        }
 
-    .divider-gold span {
-      display: block;
-      width: 60px; height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold-muted));
-    }
-    .divider-gold span:last-child {
-      background: linear-gradient(to left, transparent, var(--gold-muted));
-    }
-    .divider-gold .diamond {
-      width: 6px; height: 6px;
-      background: var(--gold);
-      transform: rotate(45deg);
-    }
+        .pkg-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: #1e2d3d;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
 
-    .header-sub {
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto;
-      line-height: 1.8;
-      opacity: 0;
-      animation: fadeUp 0.9s ease 0.5s forwards;
-    }
+        .pkg-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #c9a96e;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
 
-    /* ── MAIN GRID ── */
-    main {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px 120px;
-    }
+        .pkg-price {
+            display: flex;
+            align-items: baseline;
+            gap: 3px;
+            margin-bottom: 24px;
+        }
 
-    .packages-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
+        .pkg-dollar {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #8a7a68;
+            margin-top: 4px;
+        }
 
-    /* ── CARD ── */
-    .card {
-      position: relative;
-      background: linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 44px 36px 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
-    }
+        .pkg-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: #1e2d3d;
+            line-height: 1;
+        }
 
-    .card:hover {
-      border-color: rgba(201,169,110,0.5);
-      box-shadow: 0 12px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,169,110,0.08) inset;
-      transform: translateY(-4px);
-    }
+        .pkg-rule {
+            width: 36px;
+            height: 1px;
+            background: #c9a96e;
+            opacity: 0.5;
+            margin-bottom: 22px;
+        }
 
-    /* featured card */
-    .card.featured {
-      border-color: rgba(201,169,110,0.4);
-      background: linear-gradient(160deg, rgba(201,169,110,0.07) 0%, rgba(201,169,110,0.02) 100%);
-    }
-    .card.featured::before {
-      content: 'Most Popular';
-      position: absolute;
-      top: -1px; right: 28px;
-      background: var(--gold);
-      color: var(--bg);
-      font-family: 'Jost', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 0 0 4px 4px;
-    }
+        .pkg-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 28px 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-    .card.animate-in {
-      animation: fadeUp 0.7s ease forwards;
-    }
+        .pkg-features li {
+            font-family: 'Newsreader', serif;
+            font-size: 0.88rem;
+            color: #4a5568;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.55;
+        }
 
-    .card-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.75rem;
-      color: var(--gold-muted);
-      letter-spacing: 0.25em;
-      margin-bottom: 18px;
-    }
+        .pkg-features li::before {
+            content: '◆';
+            color: #c9a96e;
+            font-size: 0.45rem;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
 
-    .card-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.75rem;
-      font-weight: 400;
-      color: var(--cream);
-      line-height: 1.2;
-      margin-bottom: 6px;
-    }
+        .pkg-ideal {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #8a7a68;
+            border-top: 1px solid #e0d8cc;
+            padding-top: 18px;
+            margin-bottom: 28px;
+            line-height: 1.65;
+        }
 
-    .card-tagline {
-      font-size: 0.78rem;
-      font-weight: 400;
-      color: var(--gold);
-      letter-spacing: 0.04em;
-      font-style: italic;
-      font-family: 'Cormorant Garamond', serif;
-      margin-bottom: 24px;
-    }
+        .pkg-btn {
+            display: block;
+            text-align: center;
+            padding: 13px 22px;
+            border: 1px solid #c9a96e;
+            color: #c9a96e;
+            font-family: 'Newsreader', serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: background 0.3s, color 0.3s;
+            margin-top: auto;
+        }
 
-    .card-price {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-      margin-bottom: 28px;
-    }
+        .pkg-btn:hover {
+            background: #c9a96e;
+            color: #fff;
+        }
 
-    .price-dollar {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--gold-muted);
-      margin-top: 4px;
-    }
+        .pkg-card.featured .pkg-btn {
+            background: #c9a96e;
+            color: #fff;
+        }
 
-    .price-amount {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--gold-light);
-      line-height: 1;
-    }
+        .pkg-card.featured .pkg-btn:hover {
+            background: #b8975d;
+            border-color: #b8975d;
+        }
 
-    .card-rule {
-      width: 40px; height: 1px;
-      background: var(--gold-muted);
-      margin-bottom: 24px;
-      opacity: 0.5;
-    }
+        /* Custom CTA section */
+        .packages-custom {
+            background: #f0ebe3;
+            padding: 64px 24px;
+            text-align: center;
+        }
 
-    .card-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-      flex: 1;
-      margin-bottom: 36px;
-    }
+        .packages-custom-inner {
+            max-width: 580px;
+            margin: 0 auto;
+        }
 
-    .card-features li {
-      font-size: 0.86rem;
-      color: var(--text);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      line-height: 1.5;
-    }
+        .custom-label {
+            font-family: 'Newsreader', serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #c9a96e;
+            margin-bottom: 14px;
+        }
 
-    .card-features li::before {
-      content: '✦';
-      color: var(--gold-muted);
-      font-size: 0.55rem;
-      margin-top: 5px;
-      flex-shrink: 0;
-    }
+        .custom-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.9rem;
+            font-weight: 400;
+            color: #1e2d3d;
+            margin-bottom: 18px;
+        }
 
-    .card-ideal {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 0.88rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      padding-top: 20px;
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
+        .custom-divider {
+            width: 48px;
+            height: 1px;
+            background: #c9a96e;
+            margin: 0 auto 28px;
+            opacity: 0.6;
+        }
 
-    .card-btn {
-      display: block;
-      text-align: center;
-      padding: 14px 24px;
-      border: 1px solid var(--gold-muted);
-      color: var(--gold-light);
-      font-family: 'Jost', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 1px;
-      transition: background 0.3s, color 0.3s, border-color 0.3s;
-      margin-top: auto;
-    }
+        .custom-body {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.85;
+            margin-bottom: 32px;
+        }
 
-    .card-btn:hover {
-      background: var(--gold);
-      color: var(--bg);
-      border-color: var(--gold);
-    }
+        /* Disclaimer */
+        .packages-disclaimer {
+            background: #fff;
+            padding: 48px 24px 60px;
+        }
 
-    .card.featured .card-btn {
-      background: var(--gold);
-      color: var(--bg);
-      border-color: var(--gold);
-    }
+        .disclaimer-inner {
+            max-width: 780px;
+            margin: 0 auto;
+            border: 1px solid #e0d8cc;
+            border-left: 3px solid #c9a96e;
+            padding: 28px 36px;
+            background: #faf8f5;
+            border-radius: 2px;
+        }
 
-    .card.featured .card-btn:hover {
-      background: var(--gold-light);
-      border-color: var(--gold-light);
-    }
+        .disclaimer-label {
+            font-family: 'Newsreader', serif;
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: #c9a96e;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    /* ── CUSTOM SUPPORT SECTION ── */
-    .custom-section {
-      position: relative;
-      z-index: 1;
-      padding: 0 24px 80px;
-    }
+        .disclaimer-label::before {
+            content: '⚕';
+            font-size: 0.85rem;
+            opacity: 0.75;
+        }
 
-    .custom-inner {
-      max-width: 640px;
-      margin: 0 auto;
-      text-align: center;
-      border: 1px solid var(--border);
-      padding: 56px 52px;
-      background: linear-gradient(160deg, rgba(201,169,110,0.05) 0%, rgba(201,169,110,0.01) 100%);
-      border-radius: 2px;
-      opacity: 0;
-      animation: fadeUp 0.9s ease 1s forwards;
-    }
+        .disclaimer-text {
+            font-family: 'Newsreader', serif;
+            font-size: 0.82rem;
+            font-weight: 300;
+            color: #6b7280;
+            line-height: 1.9;
+        }
 
-    .custom-eyebrow {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    .custom-body {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-style: italic;
-      color: var(--text);
-      line-height: 1.9;
-      margin-bottom: 36px;
-    }
-
-    .contact-btn {
-      display: inline-block;
-      padding: 15px 44px;
-      border: 1px solid var(--gold-muted);
-      color: var(--gold-light);
-      font-family: 'Jost', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 1px;
-      transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .contact-btn:hover {
-      background: var(--gold);
-      color: var(--bg);
-      border-color: var(--gold);
-      box-shadow: 0 0 30px rgba(201,169,110,0.2);
-    }
-
-    /* ── FOOTER NOTE ── */
-    .footer-note {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 0 24px 80px;
-      opacity: 0;
-      animation: fadeUp 1s ease 1.2s forwards;
-    }
-
-    .footer-note p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 580px;
-      margin: 0 auto 28px;
-      line-height: 1.9;
-    }
-
-    .footer-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-    .footer-divider span {
-      display: block;
-      width: 80px; height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,169,110,0.3));
-    }
-    .footer-divider span:last-child {
-      background: linear-gradient(to left, transparent, rgba(201,169,110,0.3));
-    }
-    .footer-divider .phoenix-icon {
-      font-size: 1.1rem;
-      color: var(--gold-muted);
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 700px) {
-      .packages-grid { grid-template-columns: 1fr; }
-      .card { padding: 36px 28px 40px; }
-    }
-  </style>
+        @media (max-width: 700px) {
+            .packages-grid { grid-template-columns: 1fr; }
+            .pkg-card { padding: 32px 24px 36px; }
+            .disclaimer-inner { padding: 22px 18px; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="glow-top"></div>
+    <!-- Navigation — identical to every other page -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Royal Phoenix Health & Wellness" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="packages.html" class="active">Packages</a></li>
+                <li><a href="booking.html" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<!-- ── HEADER ── -->
-<header>
-  <p class="eyebrow">Royal Phoenix Health &amp; Wellness</p>
-  <h1 class="site-title">Signature <em>Offerings</em></h1>
-  <div class="divider-gold">
-    <span></span>
-    <div class="diamond"></div>
-    <span></span>
-  </div>
-  <p class="header-sub">Each offering is designed to support your body's natural balance through frequency-based technology and compassionate wellness coaching.</p>
-</header>
+    <!-- Hero -->
+    <section class="page-hero packages-hero">
+        <div class="booking-container">
+            <h1 class="page-title">Signature Offerings</h1>
+            <p class="page-subtitle">Each offering is designed to support your body's natural balance through frequency-based technology and compassionate wellness coaching.</p>
+        </div>
+    </section>
 
-<!-- ── PACKAGES ── -->
-<main>
-  <div class="packages-grid">
+    <!-- Packages Grid -->
+    <section class="packages-section">
+        <div class="packages-inner">
+            <div class="packages-grid">
 
-    <!-- CARD 1 -->
-    <div class="card" data-delay="0">
-      <p class="card-number">01 / 04</p>
-      <h2 class="card-name">Phoenix Insight Session</h2>
-      <p class="card-tagline">Your first step toward clarity and awareness</p>
-      <div class="card-price">
-        <span class="price-dollar">$</span>
-        <span class="price-amount">75</span>
-      </div>
-      <div class="card-rule"></div>
-      <ul class="card-features">
-        <li>Full Inner-Voice AO Scan</li>
-        <li>Personalized frequency support tones</li>
-        <li>15-minute guided review of your key findings</li>
-        <li>Identification of your primary imbalance areas</li>
-        <li>Clear next-step guidance for your wellness journey</li>
-      </ul>
-      <p class="card-ideal">Perfect for first-time clients seeking clarity, insight, and direction.</p>
-      <a href="#" class="card-btn">Begin Here</a>
-    </div>
+                <!-- Card 1 -->
+                <div class="pkg-card">
+                    <p class="pkg-number">01 / 04</p>
+                    <h2 class="pkg-name">Phoenix Insight Session</h2>
+                    <p class="pkg-tagline">Your first step toward clarity and awareness</p>
+                    <div class="pkg-price">
+                        <span class="pkg-dollar">$</span>
+                        <span class="pkg-amount">75</span>
+                    </div>
+                    <div class="pkg-rule"></div>
+                    <ul class="pkg-features">
+                        <li>Full Inner-Voice AO Scan</li>
+                        <li>Personalized frequency support tones</li>
+                        <li>15-minute guided review of your key findings</li>
+                        <li>Identification of your primary imbalance areas</li>
+                        <li>Clear next-step guidance for your wellness journey</li>
+                    </ul>
+                    <p class="pkg-ideal">Perfect for first-time clients seeking clarity, insight, and direction.</p>
+                    <a href="booking.html?package=phoenix-spark&price=75" class="pkg-btn">Begin Here</a>
+                </div>
 
-    <!-- CARD 2 -->
-    <div class="card" data-delay="150">
-      <p class="card-number">02 / 04</p>
-      <h2 class="card-name">Phoenix Ignite</h2>
-      <p class="card-tagline">Build momentum, clarity, and consistency</p>
-      <div class="card-price">
-        <span class="price-dollar">$</span>
-        <span class="price-amount">500</span>
-      </div>
-      <div class="card-rule"></div>
-      <ul class="card-features">
-        <li>4 guided transformation sessions (weekly)</li>
-        <li>4 Inner-Voice AO scans for progress tracking</li>
-        <li>Customized frequency support tones</li>
-        <li>Personalized blueprint for balance &amp; alignment</li>
-        <li>Ongoing insight into emotional and energetic patterns</li>
-      </ul>
-      <p class="card-ideal">Ideal for those ready to actively begin creating real change.</p>
-      <a href="#" class="card-btn">Ignite Your Journey</a>
-    </div>
+                <!-- Card 2 -->
+                <div class="pkg-card">
+                    <p class="pkg-number">02 / 04</p>
+                    <h2 class="pkg-name">Phoenix Ignite</h2>
+                    <p class="pkg-tagline">Build momentum, clarity, and consistency</p>
+                    <div class="pkg-price">
+                        <span class="pkg-dollar">$</span>
+                        <span class="pkg-amount">500</span>
+                    </div>
+                    <div class="pkg-rule"></div>
+                    <ul class="pkg-features">
+                        <li>4 guided transformation sessions (weekly)</li>
+                        <li>4 Inner-Voice AO scans for progress tracking</li>
+                        <li>Customized frequency support tones</li>
+                        <li>Personalized blueprint for balance &amp; alignment</li>
+                        <li>Ongoing insight into emotional and energetic patterns</li>
+                    </ul>
+                    <p class="pkg-ideal">Ideal for those ready to actively begin creating real change.</p>
+                    <a href="booking.html?package=phoenix-ignite&price=500" class="pkg-btn">Ignite Your Journey</a>
+                </div>
 
-    <!-- CARD 3 – FEATURED -->
-    <div class="card featured" data-delay="300">
-      <p class="card-number">03 / 04</p>
-      <h2 class="card-name">Phoenix Reset</h2>
-      <p class="card-tagline">Deep healing, identity shifts, and lasting change</p>
-      <div class="card-price">
-        <span class="price-dollar">$</span>
-        <span class="price-amount">1,500</span>
-      </div>
-      <div class="card-rule"></div>
-      <ul class="card-features">
-        <li>6 guided transformation sessions (bi-weekly)</li>
-        <li>Weekly Inner-Voice scans (12 total)</li>
-        <li>Custom frequency optimization support</li>
-        <li>Personalized Wellness Action Plan</li>
-        <li>Monthly progress evaluations &amp; adjustments</li>
-        <li>Email &amp; text accountability support</li>
-      </ul>
-      <p class="card-ideal">For individuals committed to meaningful, lasting transformation.</p>
-      <a href="#" class="card-btn">Begin Your Reset</a>
-    </div>
+                <!-- Card 3 — Featured -->
+                <div class="pkg-card featured">
+                    <p class="pkg-number">03 / 04</p>
+                    <h2 class="pkg-name">Phoenix Reset</h2>
+                    <p class="pkg-tagline">Deep healing, identity shifts, and lasting change</p>
+                    <div class="pkg-price">
+                        <span class="pkg-dollar">$</span>
+                        <span class="pkg-amount">1,500</span>
+                    </div>
+                    <div class="pkg-rule"></div>
+                    <ul class="pkg-features">
+                        <li>6 guided transformation sessions (bi-weekly)</li>
+                        <li>Weekly Inner-Voice scans (12 total)</li>
+                        <li>Custom frequency optimization support</li>
+                        <li>Personalized Wellness Action Plan</li>
+                        <li>Monthly progress evaluations &amp; adjustments</li>
+                        <li>Email &amp; text accountability support</li>
+                    </ul>
+                    <p class="pkg-ideal">For individuals committed to meaningful, lasting transformation.</p>
+                    <a href="booking.html?package=phoenix-reset&price=1500" class="pkg-btn">Begin Your Reset</a>
+                </div>
 
-    <!-- CARD 4 -->
-    <div class="card" data-delay="450">
-      <p class="card-number">04 / 04</p>
-      <h2 class="card-name">Phoenix Rebirth</h2>
-      <p class="card-tagline">Full transformation, support, and personal evolution</p>
-      <div class="card-price">
-        <span class="price-dollar">$</span>
-        <span class="price-amount">2,500</span>
-      </div>
-      <div class="card-rule"></div>
-      <ul class="card-features">
-        <li>2–4 guided sessions per month</li>
-        <li>Weekly Inner-Voice scans (24 total)</li>
-        <li>Fully customized wellness &amp; transformation plan</li>
-        <li>Priority messaging support</li>
-        <li>Monthly deep-dive progress &amp; recalibration sessions</li>
-        <li>Two emergency clarity calls per month</li>
-      </ul>
-      <p class="card-ideal">For those ready to fully step into their next level of health, identity, and life.</p>
-      <a href="#" class="card-btn">Claim Your Rebirth</a>
-    </div>
+                <!-- Card 4 -->
+                <div class="pkg-card">
+                    <p class="pkg-number">04 / 04</p>
+                    <h2 class="pkg-name">Phoenix Rebirth</h2>
+                    <p class="pkg-tagline">Full transformation, support, and personal evolution</p>
+                    <div class="pkg-price">
+                        <span class="pkg-dollar">$</span>
+                        <span class="pkg-amount">2,500</span>
+                    </div>
+                    <div class="pkg-rule"></div>
+                    <ul class="pkg-features">
+                        <li>2–4 guided sessions per month</li>
+                        <li>Weekly Inner-Voice scans (24 total)</li>
+                        <li>Fully customized wellness &amp; transformation plan</li>
+                        <li>Priority messaging support</li>
+                        <li>Monthly deep-dive progress &amp; recalibration sessions</li>
+                        <li>Two emergency clarity calls per month</li>
+                    </ul>
+                    <p class="pkg-ideal">For those ready to fully step into their next level of health, identity, and life.</p>
+                    <a href="booking.html?package=phoenix-rebirth&price=2500" class="pkg-btn">Claim Your Rebirth</a>
+                </div>
 
-  </div>
-</main>
+            </div>
+        </div>
+    </section>
 
-<!-- ── CUSTOM SUPPORT SECTION ── -->
-<div class="custom-section">
-  <div class="custom-inner">
-    <div class="divider-gold" style="margin-bottom: 36px;">
-      <span></span>
-      <div class="diamond"></div>
-      <span></span>
-    </div>
-    <p class="custom-eyebrow">Something More Personal?</p>
-    <p class="custom-body">Each journey is unique. If you're seeking a more personalized or tailored experience, I offer customized support options designed to meet you where you are. Feel free to reach out to explore what would best support your transformation.</p>
-    <a href="#" class="contact-btn">Contact Us</a>
-  </div>
-</div>
+    <!-- Something More Personal -->
+    <section class="packages-custom">
+        <div class="packages-custom-inner">
+            <p class="custom-label">Something More Personal?</p>
+            <h2 class="custom-heading">A Journey Tailored to You</h2>
+            <div class="custom-divider"></div>
+            <p class="custom-body">Each healing path is unique. If you're looking for something more personalized, I offer customized support options designed to meet you exactly where you are. Reach out and let's explore what would best support your transformation.</p>
+            <a href="booking.html" class="nav-cta" style="display:inline-block; text-decoration:none; padding: 13px 32px;">Contact Us</a>
+        </div>
+    </section>
 
-<!-- ── FOOTER NOTE ── -->
-<div class="footer-note">
-  <div class="footer-divider">
-    <span></span>
-    <div class="phoenix-icon">⟡</div>
-    <span></span>
-  </div>
-  <p>All sessions are designed to support your body's natural balance using frequency-based technology and guided wellness coaching.</p>
-</div>
+    <!-- Medical Disclaimer -->
+    <section class="packages-disclaimer">
+        <div class="disclaimer-inner">
+            <p class="disclaimer-label">Medical Disclaimer</p>
+            <p class="disclaimer-text">
+                The services at Royal Phoenix Health &amp; Wellness, including AO scans and sound frequency sessions, are for educational wellness purposes only. They do not diagnose, treat, or replace medical care. Always consult a licensed healthcare provider for medical advice. By using these services, you acknowledge their complementary nature to traditional care.
+            </p>
+        </div>
+    </section>
 
-<script>
-  // Intersection Observer for card entrance animations
-  const cards = document.querySelectorAll('.card');
+    <!-- Footer — identical to every other page -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Royal Phoenix Health &amp; Wellness</h3>
+                    <p>Rise. Restore. Reclaim Your Power.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="packages.html">Packages</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Royal Phoenix Health &amp; Wellness. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const delay = parseInt(entry.target.dataset.delay || 0);
-        setTimeout(() => {
-          entry.target.style.animation = `fadeUp 0.7s ease forwards`;
-        }, delay);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  cards.forEach(card => observer.observe(card));
-</script>
+    <script src="script.js"></script>
 
 </body>
 </html>
